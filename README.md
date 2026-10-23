@@ -15,6 +15,12 @@ npm run preview           # sirve dist/ respetando el base
 python3 scripts/shots.py  # capturas (con el preview en marcha)
 ```
 
+## Diseño (v2, tono inspirado en nikkibeach.com/ibiza)
+- Tipos (libres, autoalojados con Fontsource): **Marcellus** (titulares, menú, botones; sustituto de Flatline), **Jost** (texto; sustituto de Brandon Grotesque) y **Pinyon Script** (acentos manuscritos).
+- Paleta en `src/styles/global.css` (`:root`): texto #534730, fondo #F8F2ED, superficie #FCFAF8, rubor #E3D2CB, acento #9A5B43 / #A4634A, salvia #C5D6D0, oliva profundo #3B3225.
+- El wordmark (serif grueso de la marca) se mantiene, en marrón oliva / crema.
+- Capturas de referencia: `/workspace/salvaje/inspiracion/nikki-*.png`.
+
 ## Contenido
 - Datos del negocio, horario (editable) y JSON-LD de horario: `src/data/site.ts`. Horario = ficha de Google (23/10/2026) ⚠️ por confirmar.
 - Secciones: `src/components/` (Hero, Split 50/50, Restaurante, Carta, BeachClub, Agenda, Gallery, Visit, Footer).
