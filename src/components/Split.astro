@@ -1,0 +1,25 @@
+---
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import dia from '../assets/photos/caseta-tumbonas-bandera.jpg';
+import noche from '../assets/photos/noche-barra-skyline.jpg';
+const sides = [
+  { id: 'restaurante', kicker: 'De día', title: 'Restaurante', text: 'Arroces y paella con los pies en la arena, aperitivo y vermut frente al Mediterráneo.', img: dia, alt: 'La caseta blanca de Salvaje Beach con su bandera y tumbonas de lona sobre la arena', tone: 'dia' },
+  { id: 'beach-club', kicker: 'De tarde', title: 'Beach Club', text: 'Tardeo con DJ, cócteles, bachata y atardeceres que se alargan hasta la noche.', img: noche, alt: 'Amigos brindando de noche en la barra del chiringuito con el skyline de la playa al fondo', tone: 'noche' },
+];
+---
+<section class="split" id="dos-caras" aria-labelledby="split-title">
+  <h2 id="split-title" class="sr-only">Dos caras, un mismo chiringuito</h2>
+  {sides.map((s, i) => (
+    <a class:list={['split__panel', `split__panel--${s.tone}`, 'reveal']} style={`--d:${i * 0.12}s`} href={`#${s.id}`}>
+      <div class="split__img"><Photo src={s.img} alt={s.alt} sizes="(min-width: 900px) 60vw, 100vw" widths={[480, 800, 1066]} /></div>
+      <div class="split__body">
+        <p class="split__kicker">{s.kicker}</p>
+        <h3 class="split__title">{s.title}</h3>
+        <p class="split__text">{s.text}</p>
+        <span class="split__more">Descubrir <Icon name="arrow" size={16} /></span>
+      </div>
+    </a>
+  ))}
+  <p class="split__or" aria-hidden="true">&amp;</p>
+</section>

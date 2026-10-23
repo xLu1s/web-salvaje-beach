@@ -1,0 +1,12 @@
+---
+/** Recurso gráfico: sol + ondas, inspirado en el sello de la bandera (no es el logo oficial). */
+interface Props { class?: string }
+const { class: cls } = Astro.props;
+---
+<svg class:list={['sun', cls]} viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+  <circle cx="60" cy="52" r="26" fill="currentColor" />
+  <g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round">
+    <path d="M14 92c8-8 15-8 23 0s15 8 23 0 15-8 23 0 15 8 23 0" />
+    <path d="M14 108c8-8 15-8 23 0s15 8 23 0 15-8 23 0 15 8 23 0" />
+  </g>
+</svg>

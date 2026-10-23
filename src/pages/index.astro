@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Marquee from '../components/Marquee.astro';
+import Split from '../components/Split.astro';
+import Restaurante from '../components/Restaurante.astro';
+import Carta from '../components/Carta.astro';
+import BeachClub from '../components/BeachClub.astro';
+import Agenda from '../components/Agenda.astro';
+import Gallery from '../components/Gallery.astro';
+import Visit from '../components/Visit.astro';
+import Footer from '../components/Footer.astro';
+import FloatingReserve from '../components/FloatingReserve.astro';
+---
+<Base
+  title="Salvaje Beach Gandia · Chiringuito Nº6 en la Playa Nord | Restaurante y beach club"
+  description="Chiringuito a pie de arena en la Playa Nord de Gandia (Passeig Marítim de Neptú, 81): paella y arroces frente al mar, aperitivo, tardeo con DJ y cócteles. Reservas: 638 141 832."
+>
+  <Header />
+  <main id="contenido">
+    <Hero />
+    <Marquee items={['Comidas', 'Tardeo', 'Copas frente al mar', 'Hazlo Salvaje o no lo hagas', 'Playa Nord de Gandia']} />
+    <Split />
+    <Restaurante />
+    <Carta />
+    <BeachClub />
+    <Marquee tone="salvia" reverse items={['Tardeo con DJ', 'Bachata', 'Catas al atardecer', 'Cócteles', 'En Salvaje siempre será verano']} />
+    <Agenda />
+    <Gallery />
+    <Visit />
+  </main>
+  <Footer />
+  <FloatingReserve />
+</Base>

@@ -1,0 +1,14 @@
+---
+interface Props { items: string[]; tone?: 'terracota' | 'arena' | 'salvia' | 'noche'; reverse?: boolean }
+const { items, tone = 'terracota', reverse = false } = Astro.props;
+const row = [...items, ...items];
+---
+<div class:list={['marquee', `marquee--${tone}`, { 'marquee--reverse': reverse }]} aria-hidden="true">
+  <div class="marquee__track">
+    {[0, 1].map(() => (
+      <ul class="marquee__group" role="list">
+        {row.map((t) => <li>{t}<span class="marquee__star">✺</span></li>)}
+      </ul>
+    ))}
+  </div>
+</div>

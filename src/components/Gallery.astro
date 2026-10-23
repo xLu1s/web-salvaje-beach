@@ -1,0 +1,33 @@
+---
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+import a from '../assets/photos/chef-orilla.jpg';
+import b from '../assets/photos/alfajor.jpg';
+import c from '../assets/photos/cata-atardecer-copa.jpg';
+import d from '../assets/photos/chef-emplatando-noche.jpg';
+import e from '../assets/photos/vinos-botellas.jpg';
+import f from '../assets/photos/alfajores-platos.jpg';
+const photos = [
+  { src: a, alt: 'El chef preparando una cata en la orilla con el mar detrás', speed: 0.04 },
+  { src: c, alt: 'Chica con una copa de vino blanco al atardecer', speed: -0.04 },
+  { src: d, alt: 'Chef emplatando de noche en la arena', speed: 0.04 },
+  { src: b, alt: 'Alfajor servido en un plato de cristal', speed: 0.04 },
+  { src: e, alt: 'Botellas de vino preparadas para una cata', speed: -0.04 },
+  { src: f, alt: 'Platos de cristal con alfajores en una mesa de la playa', speed: 0.04 },
+];
+---
+<section class="section gallery" id="galeria" aria-labelledby="gal-title">
+  <div class="container gallery__head">
+    <p class="eyebrow reveal"><span>04</span> Galería</p>
+    <h2 id="gal-title" class="display reveal">Así se vive <em>Salvaje</em></h2>
+  </div>
+  <div class="gallery__grid">
+    {photos.map((p, i) => (
+      <figure class:list={['gallery__item', `gallery__item--${i + 1}`, 'reveal']} style={`--d:${(i % 3) * 0.08}s`} data-speed={p.speed}>
+        <Photo src={p.src} alt={p.alt} sizes="(min-width: 900px) 33vw, 50vw" widths={[360, 560, 800]} />
+      </figure>
+    ))}
+  </div>
+  <p class="gallery__ig reveal"><a href={site.instagram} target="_blank" rel="noopener"><Icon name="instagram" size={20} /> Más en {site.instagramHandle}</a></p>
+</section>

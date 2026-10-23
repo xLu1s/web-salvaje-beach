@@ -1,0 +1,21 @@
+---
+/**
+ * CARTA — placeholder. No hay carta ni precios publicados en ninguna fuente (brief §3).
+ * Cuando el local la pase, sustituir el bloque .carta__soon por la carta en HTML (pestañas por categoría).
+ */
+import { site } from '../data/site';
+import Sun from './Sun.astro';
+---
+<section class="section carta" id="carta" aria-labelledby="carta-title">
+  <div class="container carta__inner">
+    <div class="carta__card reveal">
+      <p class="eyebrow eyebrow--center">La carta</p>
+      <h2 id="carta-title" class="carta__title">Carta próximamente</h2>
+      <p class="carta__note">Pendiente de recibir del local</p>
+      <div class="carta__rule" aria-hidden="true"><span></span><Sun class="carta__sun" /><span></span></div>
+      <p class="carta__text">Aquí podrás consultar la carta completa, con precios y alérgenos, sin descargar nada.</p>
+      <p class="carta__small">¿Alguna alergia o duda? Llámanos al <a href={`tel:${site.phoneE164}`}>{site.phoneDisplay}</a>.</p>
+      <span class="carta__stamp" aria-hidden="true">Próximamente</span>
+    </div>
+  </div>
+</section>

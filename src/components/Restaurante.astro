@@ -1,0 +1,42 @@
+---
+import Photo from './Photo.astro';
+import Sun from './Sun.astro';
+import paella from '../assets/photos/paella-mesa-arena.jpg';
+import bogavante from '../assets/photos/arroz-bogavante.jpg';
+import aperitivo from '../assets/photos/copas-tumbona-terracota.jpg';
+import jamon from '../assets/photos/jamon-queso.jpg';
+import carne from '../assets/photos/carne-brasa.jpg';
+import tosta from '../assets/photos/tosta.jpg';
+// Solo platos y bebidas que aparecen en fuentes públicas (ver brief §3). Sin precios: no están publicados.
+const dishes = [
+  { title: 'Paella valenciana', text: 'En su paellera, al centro de la mesa y con el mar delante.', img: paella, alt: 'Paella valenciana en una mesa blanca sobre la arena, con copas de vino blanco' },
+  { title: 'Arroz con bogavante', text: 'Para compartir (y hacerle foto antes, claro).', img: bogavante, alt: 'Paellera de arroz con bogavante' },
+  { title: 'Aperitivo y vermut', text: 'Una cervecita, un vermut o lo que tú prefieras, con su aperitivo.', img: aperitivo, alt: 'Dos copas con hielo sobre una tumbona de lona terracota al sol' },
+  { title: 'Para picar', text: 'Jamón, queso y algo rico para alargar la sobremesa.', img: jamon, alt: 'Plato de jamón y queso' },
+];
+---
+<section class="section restaurante" id="restaurante" aria-labelledby="rest-title">
+  <div class="container restaurante__intro">
+    <div class="restaurante__text">
+      <p class="eyebrow reveal"><span>01</span> Restaurante · de día</p>
+      <h2 id="rest-title" class="display reveal">Arroz, mar y <em>sobremesa</em> sin prisa</h2>
+      <p class="lead reveal">En Salvaje se come mirando al Mediterráneo. Paella valenciana servida en la paellera, arroz con bogavante para compartir y un aperitivo de los de siempre —aceitunas, patatas chips y frutos secos— para acompañar la cerveza, el vermut o el vino.</p>
+      <p class="reveal">Y de vez en cuando, cenas maridaje en la arena: carne a la brasa, tostas y vinos seleccionados, con el chef emplatando a pie de playa.</p>
+    </div>
+    <div class="restaurante__collage" aria-hidden="false">
+      <div class="collage__a reveal" data-speed="0.06"><Photo src={carne} alt="Carne a la brasa cortada en láminas en una cena maridaje" sizes="(min-width: 900px) 24vw, 50vw" widths={[360, 560, 800]} /></div>
+      <div class="collage__b reveal" style="--d:.12s" data-speed="-0.05"><Photo src={tosta} alt="Tosta emplatada en una cena en la playa" sizes="(min-width: 900px) 20vw, 45vw" widths={[320, 480, 720]} /></div>
+      <Sun class="collage__sun" />
+    </div>
+  </div>
+
+  <ul class="container dishes" role="list">
+    {dishes.map((d, i) => (
+      <li class="dish reveal" style={`--d:${i * 0.08}s`}>
+        <div class="dish__img"><Photo src={d.img} alt={d.alt} sizes="(min-width: 1100px) 25vw, (min-width: 640px) 50vw, 85vw" widths={[360, 560, 800]} /></div>
+        <h3 class="dish__title">{d.title}</h3>
+        <p class="dish__text">{d.text}</p>
+      </li>
+    ))}
+  </ul>
+</section>

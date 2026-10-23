@@ -1,0 +1,44 @@
+---
+import Photo from './Photo.astro';
+import { publicUrl } from '../lib/base';
+import fiesta from '../assets/photos/fiesta-movil.jpg';
+import mesas from '../assets/photos/mesas-arena-noche.jpg';
+const v = (f: string) => publicUrl(`video/${f}`);
+---
+<section class="section club" id="beach-club" aria-labelledby="club-title">
+  <div class="club__glow" aria-hidden="true"></div>
+  <div class="container club__head">
+    <p class="eyebrow reveal"><span>02</span> Beach Club · tardeo</p>
+    <h2 id="club-title" class="display reveal">Cuando baja el sol, <em>sube la música</em></h2>
+    <p class="lead reveal">Tardes largas con DJ, mojitos y cócteles con los pies en la arena. Tumbonas de lona frente al mar, guirnaldas de luces y ese ambiente de grupo de amigos que no quiere que se acabe el día.</p>
+  </div>
+
+  <div class="container club__grid">
+    <figure class="tile tile--video tile--fiesta reveal">
+      <video data-lazy-video muted loop playsinline preload="none" poster={v('fiesta-poster.jpg')} aria-hidden="true" tabindex="-1">
+        <source data-src={v('fiesta.webm')} type="video/webm" />
+        <source data-src={v('fiesta.mp4')} type="video/mp4" />
+      </video>
+      <figcaption>Fiestas con DJ</figcaption>
+    </figure>
+    <figure class="tile tile--tall reveal" style="--d:.08s">
+      <Photo src={fiesta} alt="Gente bailando en una fiesta del chiringuito" sizes="(min-width: 900px) 30vw, 60vw" widths={[360, 560, 800]} />
+      <figcaption>Tardeo</figcaption>
+    </figure>
+    <blockquote class="tile tile--quote reveal" style="--d:.12s">
+      <p>Going offline es el nuevo lujo.</p>
+      <cite>— Salvaje Beach</cite>
+    </blockquote>
+    <figure class="tile reveal" style="--d:.16s">
+      <Photo src={mesas} alt="Mesas con velas sobre la arena de noche y los edificios del paseo al fondo" sizes="(min-width: 900px) 30vw, 60vw" widths={[360, 560, 800]} />
+      <figcaption>Noches en la arena</figcaption>
+    </figure>
+    <figure class="tile tile--video reveal" style="--d:.2s">
+      <video data-lazy-video muted loop playsinline preload="none" poster={v('tardeo-poster.jpg')} aria-hidden="true" tabindex="-1">
+        <source data-src={v('tardeo.webm')} type="video/webm" />
+        <source data-src={v('tardeo.mp4')} type="video/mp4" />
+      </video>
+      <figcaption>Cócteles al sol</figcaption>
+    </figure>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+---
+/**
+ * Wordmark «SALVAJE BEACH». El logo original solo existe a 150 px (foto de perfil de Instagram), demasiado
+ * pequeño para vectorizarlo con calidad. Se ha compuesto en Fraunces Black (opsz 9, SOFT 0), la serif gratuita
+ * más parecida, y se ha pasado a curvas con potrace (no depende de la fuente). Hereda el color (currentColor).
+ * Sustituir por el vector oficial cuando lo pase el cliente.
+ */
+import svg from '../assets/brand/wordmark.svg?raw';
+interface Props { class?: string; label?: string; decorative?: boolean }
+const { class: cls, label = 'Salvaje Beach', decorative = false } = Astro.props;
+const out = decorative
+  ? svg.replace(/role="img" aria-label="[^"]*"/, 'aria-hidden="true" focusable="false"')
+  : svg.replace(/aria-label="[^"]*"/, `aria-label="${label}"`);
+---
+<span class:list={['wordmark', cls]} set:html={out} />

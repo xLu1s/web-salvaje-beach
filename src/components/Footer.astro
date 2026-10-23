@@ -1,0 +1,21 @@
+---
+import Wordmark from './Wordmark.astro';
+import Seal from './Seal.astro';
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+<footer class="footer">
+  <div class="container footer__top">
+    <Wordmark class="footer__logo" />
+    <Seal class="footer__seal" />
+  </div>
+  <div class="container footer__cols">
+    <p><strong>{site.fullName}</strong><br />{site.address.street}<br />{site.address.postalCode} {site.address.locality} · Playa Nord</p>
+    <p><a href={`tel:${site.phoneE164}`}><Icon name="phone" size={16} /> {site.phoneDisplay}</a><br /><a href={site.instagram} target="_blank" rel="noopener"><Icon name="instagram" size={16} /> {site.instagramHandle}</a></p>
+    <p class="footer__claim">{site.claim} 🤘</p>
+  </div>
+  <div class="container footer__bottom">
+    <p>© {new Date().getFullYear()} Salvaje Beach · Gandia</p>
+    <p>Fotos y vídeos: @salvajebeach.gandia · Vídeo de fiesta: @samuel_st12</p>
+  </div>
+</footer>

@@ -1,0 +1,47 @@
+---
+import Icon from './Icon.astro';
+import { site, hours, hoursLabel, mapsLink, mapsEmbed } from '../data/site';
+---
+<section class="section visit" id="visitanos" aria-labelledby="visit-title">
+  <div class="container visit__grid">
+    <div class="visit__info">
+      <p class="eyebrow reveal"><span>05</span> Visítanos</p>
+      <h2 id="visit-title" class="display reveal">Te esperamos <em>en la arena</em></h2>
+
+      <div class="visit__block reveal">
+        <h3 class="visit__label"><Icon name="pin" size={16} /> Dónde</h3>
+        <p class="visit__addr">{site.address.street}<br />{site.address.postalCode} {site.address.locality} ({site.address.region})</p>
+        <p class="visit__muted">En la arena de la {site.address.zone}.</p>
+        <a class="link-arrow" href={mapsLink} target="_blank" rel="noopener">Cómo llegar <Icon name="arrow" size={16} /></a>
+      </div>
+
+      <div class="visit__block reveal">
+        <h3 class="visit__label"><Icon name="clock" size={16} /> {hoursLabel}</h3>
+        <table class="hours" data-hours>
+          <caption class="sr-only">{hoursLabel}</caption>
+          <tbody>
+            {hours.map((h) => (
+              <tr data-days={h.days.join(',')}><th scope="row">{h.label}</th><td>{h.open} – {h.close}</td></tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="visit__muted">Abrimos todo el año, pero el horario cambia con la temporada y los eventos. Antes de venir, échale un ojo a <a href={site.instagram} target="_blank" rel="noopener">Instagram</a> o llámanos.</p>
+      </div>
+
+      <div class="visit__block visit__block--phone reveal">
+        <h3 class="visit__label"><Icon name="phone" size={16} /> Reservas por teléfono</h3>
+        <a class="visit__phone" href={`tel:${site.phoneE164}`}>{site.phoneDisplay}</a>
+      </div>
+    </div>
+
+    <div class="visit__map reveal" data-map>
+      <div class="map__placeholder">
+        <svg class="map__waves" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60c33-30 67-30 100 0s67 30 100 0 67-30 100 0 67 30 100 0v60H0z" fill="currentColor" /></svg>
+        <span class="map__pin" aria-hidden="true"><Icon name="pin" size={34} /></span>
+        <p class="map__name">Salvaje Beach<br /><small>Chiringuito Nº6 · Playa Nord</small></p>
+        <button class="btn btn--outline" type="button" data-map-load data-src={mapsEmbed}>Cargar mapa de Google</button>
+        <p class="map__legal">El mapa se carga desde Google solo si lo pides.</p>
+      </div>
+    </div>
+  </div>
+</section>

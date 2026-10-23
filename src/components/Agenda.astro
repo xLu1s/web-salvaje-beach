@@ -1,0 +1,51 @@
+---
+/**
+ * AGENDA — solo formatos reales vistos en el Instagram del local (ago–oct 2026). No hay fechas futuras
+ * publicadas, así que no se muestran fechas: las próximas citas se derivan a Instagram.
+ * Fuentes: instagram.com/p/DePGEoDDeiD (bachata, tardeo DJ), /p/DcjQOkrHIGV (catas), /reel/DcgwKxjIhGJ
+ * (Cocoloco Remember), /reel/DdzIVj-NrcO (Winter Season).
+ */
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import Sun from './Sun.astro';
+import { site } from '../data/site';
+import brindis from '../assets/photos/fiesta-brindis.jpg';
+import risas from '../assets/photos/fiesta-risas.jpg';
+import catas from '../assets/photos/vino-guirnaldas.jpg';
+const plans = [
+  { kicker: 'Tardeo', title: 'Tardeo con DJ', text: 'Sesiones de DJ para alargar la tarde frente al mar.', img: brindis, alt: 'Chica brindando en una fiesta de tardeo' },
+  { kicker: 'Jueves', title: 'Bachata en la arena', text: 'Los jueves de bachata: música, baile y brisa.', img: risas, alt: 'Chica riendo y bailando en el chiringuito' },
+  { kicker: 'Al atardecer', title: 'Catas al caer el sol', text: 'Copas seleccionadas y algo para picar. Plazas limitadas, con reserva.', img: catas, alt: 'Copa de vino tinto bajo guirnaldas de luces al atardecer' },
+];
+---
+<section class="section agenda" id="agenda" aria-labelledby="agenda-title">
+  <div class="container agenda__head">
+    <div>
+      <p class="eyebrow reveal"><span>03</span> Agenda</p>
+      <h2 id="agenda-title" class="display reveal">Planes <em>Salvajes</em></h2>
+    </div>
+    <p class="lead reveal">Bachata, catas, tardeos con DJ y fiestas especiales como el <strong>Cocoloco Remember</strong>. La programación cambia cada semana y la anunciamos en Instagram.</p>
+  </div>
+  <ul class="container plans" role="list">
+    {plans.map((p, i) => (
+      <li class="plan reveal" style={`--d:${i * 0.1}s`}>
+        <Photo src={p.img} alt={p.alt} class="plan__img" sizes="(min-width: 900px) 25vw, 80vw" widths={[360, 560, 800]} />
+        <div class="plan__body">
+          <p class="plan__kicker">{p.kicker}</p>
+          <h3 class="plan__title">{p.title}</h3>
+          <p class="plan__text">{p.text}</p>
+        </div>
+      </li>
+    ))}
+    <li class="plan plan--winter reveal" style="--d:.3s">
+      <a href={site.instagram} target="_blank" rel="noopener" class="winter">
+        <Sun class="winter__sun" />
+        <p class="plan__kicker">Muy pronto</p>
+        <h3 class="winter__title">Salvaje Winter Season</h3>
+        <p class="winter__loading" aria-label="Cargando">Loading<span>.</span><span>.</span><span>.</span></p>
+        <p class="winter__text">En Salvaje siempre será verano. Las próximas fechas, en nuestro Instagram.</p>
+        <span class="winter__link"><Icon name="instagram" size={16} /> {site.instagramHandle} <Icon name="arrow" size={16} /></span>
+      </a>
+    </li>
+  </ul>
+</section>

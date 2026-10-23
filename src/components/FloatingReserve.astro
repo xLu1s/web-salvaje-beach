@@ -1,0 +1,8 @@
+---
+/** Botón Reservar flotante (solo móvil; en escritorio la reserva está en la cabecera). Llama al local. */
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+<a class="fab" href={`tel:${site.phoneE164}`} aria-label={`Reservar llamando al ${site.phoneDisplay}`}>
+  <Icon name="phone" size={18} /> Reservar
+</a>

@@ -1,0 +1,31 @@
+---
+import Wordmark from './Wordmark.astro';
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+const links = [
+  { href: '#restaurante', label: 'Restaurante' },
+  { href: '#beach-club', label: 'Beach Club' },
+  { href: '#agenda', label: 'Agenda' },
+  { href: '#carta', label: 'Carta' },
+  { href: '#visitanos', label: 'Visítanos' },
+];
+---
+<header class="header" data-header>
+  <div class="header__inner">
+    <a class="header__brand" href="#inicio" aria-label="Salvaje Beach, ir al inicio">
+      <Wordmark class="header__logo" decorative />
+    </a>
+    <nav class="nav" id="menu" data-nav aria-label="Principal">
+      <ul role="list">
+        {links.map((l, i) => <li style={`--i:${i}`}><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+      <a class="nav__ig" href={site.instagram} target="_blank" rel="noopener"><Icon name="instagram" /> {site.instagramHandle}</a>
+    </nav>
+    <a class="btn btn--solid header__cta" href={`tel:${site.phoneE164}`} aria-label={`Reservar llamando al ${site.phoneDisplay}`}>
+      <Icon name="phone" size={16} /> Reservar
+    </a>
+    <button class="burger" type="button" data-nav-toggle aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>

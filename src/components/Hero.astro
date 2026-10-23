@@ -1,0 +1,54 @@
+---
+/**
+ * HERO con vídeo real del Instagram del local (sin audio, en bucle, sin texto sobreimpreso):
+ *  - Escritorio (16:9, 11 s): de día → de noche. reel_03 «vino en la playa» (0–5 s) + 1 plano de reel_02
+ *    (aperitivo) + 3 planos de fiesta de reel_01 (@samuel_st12, permiso confirmado por Luis), recortados en
+ *    horizontal y por debajo de los rótulos quemados de los reels.
+ *  - Móvil (vertical, 11,6 s): reel_03 completo (recortado bajo su rótulo) + 2 planos de fiesta de reel_01.
+ * main.ts elige la versión según el viewport. Con prefers-reduced-motion no se carga: queda el póster.
+ */
+import Wordmark from './Wordmark.astro';
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+import { publicUrl } from '../lib/base';
+const v = (f: string) => publicUrl(`video/${f}`);
+---
+<section class="hero" id="inicio" aria-labelledby="hero-title">
+  <div class="hero__media" data-parallax>
+    <picture>
+      <source media="(min-width: 768px) and (min-aspect-ratio: 9/10)" srcset={v('hero-desktop-poster.jpg')} />
+      <img class="hero__poster" src={v('hero-mobile-poster.jpg')} alt="" width="720" height="934" fetchpriority="high" decoding="async" />
+    </picture>
+    <video
+      class="hero__video"
+      data-hero-video
+      data-desktop-webm={v('hero-desktop.webm')}
+      data-desktop-mp4={v('hero-desktop.mp4')}
+      data-mobile-webm={v('hero-mobile.webm')}
+      data-mobile-mp4={v('hero-mobile.mp4')}
+      muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+    <div class="hero__veil"></div>
+  </div>
+
+  <div class="hero__content">
+    <p class="hero__eyebrow reveal">{site.seal}</p>
+    <h1 id="hero-title" class="hero__title">
+      <Wordmark class="hero__logo" decorative />
+      <span class="sr-only">Salvaje Beach, chiringuito Nº6 en la Playa Nord de Gandia: restaurante y beach club frente al mar</span>
+    </h1>
+    <p class="hero__claim reveal" style="--d:.15s">{site.claim} <span aria-hidden="true">🤘</span></p>
+    <p class="hero__sub reveal" style="--d:.25s">Comidas, tardeo y copas a pie de arena en la Playa Nord de Gandia. Todo el año.</p>
+  </div>
+
+  <a class="hero__scroll" href="#dos-caras"><span>Descubre</span><i aria-hidden="true"></i></a>
+
+  <div class="hero__facts" aria-label="Datos rápidos">
+    <a href="#visitanos"><Icon name="pin" size={15} /> Passeig Marítim de Neptú, 81</a>
+    <span class="hero__dot" aria-hidden="true">·</span>
+    <span>Abierto todo el año</span>
+  </div>
+
+  <button class="hero__toggle" type="button" data-video-toggle aria-pressed="false" aria-label="Pausar el vídeo de fondo">
+    <span class="hero__toggle-pause" aria-hidden="true">❚❚</span><span class="hero__toggle-play" aria-hidden="true">▶</span>
+  </button>
+</section>
